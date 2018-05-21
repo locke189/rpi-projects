@@ -4,7 +4,7 @@ try:
 except RuntimeError:
     print("Error importing RPi.GPIO!  This is probably because you need superuser privileges.  You can achieve this by using 'sudo' to run your script")
 
-from time import sleep
+from time import sleep, time
 import datetime
 
 print('setting everything up!')
@@ -31,6 +31,7 @@ def snapshot(channel):
     print('Snapped!')
 
 def getTime():
+    ts = time();
     st = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d_%H:%M:%S')
     print st
 
