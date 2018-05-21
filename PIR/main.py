@@ -13,8 +13,8 @@ print('setting everything up!')
 GPIO.setmode(GPIO.BOARD)
 
 
-# Channel setup pin 2!
-channel = 3
+# Channel setup pin 37 -> GPIO26!
+channel = 37 
 GPIO.setup(channel, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
 # Polling loop
