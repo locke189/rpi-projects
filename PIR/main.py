@@ -14,7 +14,7 @@ GPIO.setmode(GPIO.BOARD)
 
 
 # Channel setup pin 2!
-channel = 2
+channel = 3
 GPIO.setup(channel, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
 # Polling loop
