@@ -25,7 +25,7 @@ GPIO.setup(channel, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 def snapshot(channel):
     print('Get ready!')
     camera.start_preview()
-    sleep(5)
+    sleep(2)
     camera.capture('./image_%s.jpg' % getTime())
     camera.stop_preview()
     print('Snapped!')
@@ -33,7 +33,7 @@ def snapshot(channel):
 def getTime():
     ts = time();
     st = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d_%H:%M:%S')
-    print st
+    return st
 
 GPIO.add_event_detect(channel, GPIO.RISING, callback=snapshot)
 
