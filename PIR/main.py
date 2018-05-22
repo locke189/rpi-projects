@@ -1,6 +1,7 @@
 try:
     import RPi.GPIO as GPIO
     from picamera import PiCamera
+    import pygame
 except RuntimeError:
     print("Error importing RPi.GPIO!  This is probably because you need superuser privileges.  You can achieve this by using 'sudo' to run your script")
 
@@ -22,7 +23,7 @@ camera = PiCamera()
 channel = 37
 GPIO.setup(channel, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
-def snapshot(channel):
+def snapshot():
     print('Get ready!')
     camera.start_preview()
     sleep(2)
@@ -30,12 +31,26 @@ def snapshot(channel):
     camera.stop_preview()
     print('Snapped!')
 
+def playFile(file):
+    pygame.mixer.init()
+    pygame.mixer.music.load("file.mp3")
+    pygame.mixer.music.set_volume(1.0)
+    pygame.mixer.music.play()
+
+    while pygame.mixer.music.get_busy() == True:
+        pass
+
 def getTime():
     ts = time();
     st = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d_%H:%M:%S')
     return st
 
-GPIO.add_event_detect(channel, GPIO.RISING, callback=snapshot)
+
+def actions():
+    snapshot()
+    playFile('1.mp3')
+
+GPIO.add_event_detect(channel, GPIO.RISING, callback=actions)
 
 try:
     while True:
