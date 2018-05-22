@@ -42,7 +42,7 @@ def playFile():
     while pygame.mixer.music.get_busy() == True:
         pass
     pygame.mixer.music.stop()
-    pygame.mixer.music.set_volume(0.0)
+    pygame.mixer.music.set_volume(0.1)
 
 def getTime():
     ts = time();
