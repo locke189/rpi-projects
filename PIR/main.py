@@ -26,7 +26,7 @@ GPIO.setup(channel, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 # Initializing sounds
 pygame.mixer.init(48000, -16, 1, 1024)
 pygame.mixer.music.load("1.mp3")
-pygame.mixer.pause()
+pygame.mixer.stop()
 
 def snapshot():
     print('Get ready!')
