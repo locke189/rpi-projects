@@ -46,7 +46,7 @@ def getTime():
     return st
 
 
-def actions():
+def actions(ok):
     snapshot()
     playFile()
 
