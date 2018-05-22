@@ -37,10 +37,12 @@ def snapshot():
     print('Snapped!')
 
 def playFile():
+    pygame.mixer.music.set_volume(1.0)
     pygame.mixer.music.play()
     while pygame.mixer.music.get_busy() == True:
         pass
     pygame.mixer.music.stop()
+    pygame.mixer.music.set_volume(0.0)
 
 def getTime():
     ts = time();
