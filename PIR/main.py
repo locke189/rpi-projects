@@ -23,10 +23,8 @@ camera = PiCamera()
 channel = 37
 GPIO.setup(channel, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
-# Initializing sounds
-pygame.mixer.init(48000, -16, 1, 1024)
-pygame.mixer.music.load("1.mp3")
-pygame.mixer.music.set_volume(0)
+
+
 
 def snapshot():
     print('Get ready!')
@@ -37,11 +35,14 @@ def snapshot():
     print('Snapped!')
 
 def playFile():
+    # Initializing sounds
+    pygame.mixer.init(48000, -16, 1, 1024)
+    pygame.mixer.music.load("1.mp3")
     pygame.mixer.music.set_volume(1)
     pygame.mixer.music.play()
     while pygame.mixer.music.get_busy() == True:
         pass
-    pygame.mixer.music.set_volume(0)
+    pygame.mixer.quit()
 
 def getTime():
     ts = time();
