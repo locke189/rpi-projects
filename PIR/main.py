@@ -31,9 +31,9 @@ def snapshot():
     camera.stop_preview()
     print('Snapped!')
 
-def playFile(file):
+def playFile():
     pygame.mixer.init()
-    pygame.mixer.music.load("file.mp3")
+    pygame.mixer.music.load("1.mp3")
     pygame.mixer.music.set_volume(1.0)
     pygame.mixer.music.play()
 
@@ -48,7 +48,7 @@ def getTime():
 
 def actions():
     snapshot()
-    playFile('1.mp3')
+    playFile()
 
 GPIO.add_event_detect(channel, GPIO.RISING, callback=actions)
 
