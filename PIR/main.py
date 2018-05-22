@@ -47,7 +47,7 @@ def getTime():
 
 
 def actions(ok):
-    snapshot()
+    #snapshot()
     playFile()
 
 GPIO.add_event_detect(channel, GPIO.RISING, callback=actions)
