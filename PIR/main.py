@@ -25,7 +25,7 @@ channel = 37
 GPIO.setup(channel, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
 #firebase init
-fire = firebase.firebase_init()
+fire = firebase.firebase.firebase_init()
 
 def snapshot():
     #Taking a picture with the piCamera
