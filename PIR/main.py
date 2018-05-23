@@ -7,6 +7,7 @@ except RuntimeError:
 
 from time import sleep, time
 import datetime
+import firebase
 
 print('setting everything up!')
 
@@ -24,9 +25,8 @@ channel = 37
 GPIO.setup(channel, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
 
-
-
 def snapshot():
+    #Taking a picture with the piCamera
     print('Get ready!')
     camera.start_preview()
     sleep(2)
@@ -36,6 +36,8 @@ def snapshot():
 
 def playFile():
     # Initializing sounds
+    # White noise is heard if the mixer is kept initialized
+    print('Quack!!!')
     pygame.mixer.init(48000, -16, 1, 1024)
     pygame.mixer.music.load("1.mp3")
     pygame.mixer.music.set_volume(1)
@@ -43,14 +45,17 @@ def playFile():
     while pygame.mixer.music.get_busy() == True:
         pass
     pygame.mixer.quit()
+    print('Bye Quack!!!')
 
 def getTime():
+    # Returns a timestamp
     ts = time();
     st = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d_%H:%M:%S')
     return st
 
 
 def actions(ok):
+    # Lets do more than one thing at the time
     #snapshot()
     playFile()
 
