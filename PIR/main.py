@@ -24,15 +24,17 @@ camera = PiCamera()
 channel = 37
 GPIO.setup(channel, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
+#firebase init
+fire = firebase.firebase_init()
 
 def snapshot():
     #Taking a picture with the piCamera
     print('Get ready!')
-    camera.start_preview()
     sleep(2)
-    camera.capture('./image_%s.jpg' % getTime())
-    camera.stop_preview()
+    img = './image_' + getTime() +'.jpg'
+    camera.capture(img)
     print('Snapped!')
+    return img
 
 def playFile():
     # Initializing sounds
@@ -56,8 +58,8 @@ def getTime():
 
 def actions(ok):
     # Lets do more than one thing at the time
-    #snapshot()
     playFile()
+    img = snapshot()
 
 GPIO.add_event_detect(channel, GPIO.RISING, callback=actions)
 
