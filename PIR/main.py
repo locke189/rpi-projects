@@ -33,7 +33,7 @@ def snapshot():
     sleep(2)
     img = 'image_' + getTime() +'.jpg'
     img_path = './' + img
-    camera.resolution = (1024, 768)
+    camera.resolution = (720, 483)
     camera.vflip = True
     camera.hflip = True
     camera.capture(img_path)
