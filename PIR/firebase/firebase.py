@@ -1,12 +1,12 @@
 import pyrebase
 
 config = {
-    apiKey: "AIzaSyALG_2SdJS3GN1Ibpj_LGSrbmjXjJjrlvQ",
-    authDomain: "household-iot.firebaseapp.com",
-    databaseURL: "https://household-iot.firebaseio.com",
-    projectId: "household-iot",
-    storageBucket: "household-iot.appspot.com",
-    messagingSenderId: "1062863439327"
+    "apiKey": "AIzaSyALG_2SdJS3GN1Ibpj_LGSrbmjXjJjrlvQ",
+    "authDomain": "household-iot.firebaseapp.com",
+    "databaseURL": "https://household-iot.firebaseio.com",
+    "projectId": "household-iot",
+    "storageBucket": "household-iot.appspot.com",
+    "messagingSenderId": "1062863439327"
 }
 
 def firebase_init(config):
