@@ -35,6 +35,7 @@ def snapshot():
     img_path = './' + img
     camera.resolution = (1024, 768)
     camera.vflip = True
+    camera.hflip = True
     camera.capture(img_path)
     print('Snapped!')
     return img
