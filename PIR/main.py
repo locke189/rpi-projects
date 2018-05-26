@@ -52,7 +52,7 @@ def playFile():
 def getTime():
     # Returns a timestamp
     ts = time();
-    st = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d_%H:%M:%S')
+    st = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d_%H-%M-%S')
     return st
 
 
