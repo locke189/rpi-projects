@@ -33,6 +33,8 @@ def snapshot():
     sleep(2)
     img = 'image_' + getTime() +'.jpg'
     img_path = './' + img
+    camera.resolution = (1024, 768)
+    camera.vflip = True
     camera.capture(img_path)
     print('Snapped!')
     return img
@@ -48,7 +50,7 @@ def playFile():
     while pygame.mixer.music.get_busy() == True:
         pass
     pygame.mixer.quit()
-    print('Bye Quack!!!')
+    print('Quack fades away!!!')
 
 def getTime():
     # Returns a timestamp
