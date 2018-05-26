@@ -19,5 +19,6 @@ def add_image_record(firebase, img_url):
 def save_image_to_bucket(firebase, img):
     storage = firebase.storage()
     # as admin
-    storage.child("images").put(img)
-    return storage.child("images").get_url(None)
+    node = "images/" + img
+    storage.child(node).put(img)
+    return storage.child(node).get_url(None)

@@ -31,8 +31,9 @@ def snapshot():
     #Taking a picture with the piCamera
     print('Get ready!')
     sleep(2)
-    img = './image_' + getTime() +'.jpg'
-    camera.capture(img)
+    img = 'image_' + getTime() +'.jpg'
+    img_path = './' + img
+    camera.capture(img_path)
     print('Snapped!')
     return img
 
