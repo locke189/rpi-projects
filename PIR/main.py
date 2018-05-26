@@ -60,6 +60,8 @@ def actions(ok):
     # Lets do more than one thing at the time
     playFile()
     img = snapshot()
+    url = save_image_to_bucket(fire, img)
+    add_image_record(fire, url)
 
 GPIO.add_event_detect(channel, GPIO.RISING, callback=actions)
 
