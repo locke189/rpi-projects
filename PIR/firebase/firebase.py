@@ -14,7 +14,7 @@ def firebase_init(config):
 
 def add_image_record(firebase, img_url):
     db = firebase.database()
-    db.child("users").push(img)
+    db.child("users").push(img_url)
 
 def save_image_to_bucket(firebase, img):
     storage = firebase.storage()
