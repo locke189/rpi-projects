@@ -20,4 +20,4 @@ def save_image_to_bucket(firebase, img):
     storage = firebase.storage()
     # as admin
     storage.child("images").put(img)
-    return storage.child("images/%s" % img).get_url()
+    return storage.child("images").get_url()
