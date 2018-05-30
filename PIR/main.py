@@ -34,6 +34,7 @@ def snapshot():
     img = 'image_' + getTime() +'.jpg'
     img_path = './' + img
     camera.resolution = (720, 483)
+    camera.awb_mode = 'fluorescent'
     camera.vflip = True
     camera.hflip = True
     camera.capture(img_path)
