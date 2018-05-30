@@ -1,4 +1,5 @@
 import pyrebase
+from time import time
 
 config = {
     "apiKey": "AIzaSyALG_2SdJS3GN1Ibpj_LGSrbmjXjJjrlvQ",
@@ -14,7 +15,12 @@ def firebase_init(config):
 
 def add_image_record(firebase, img_url):
     db = firebase.database()
-    db.child("snapshots").push(img_url)
+    record = {
+        timestamp: time(),
+        url: img_url,
+        label: "PIR Event"
+    }
+    db.child("snapshots").push(record)
 
 def save_image_to_bucket(firebase, img):
     storage = firebase.storage()

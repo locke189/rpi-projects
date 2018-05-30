@@ -40,12 +40,12 @@ def snapshot():
     print('Snapped!')
     return img
 
-def playFile():
+def playFile(file):
     # Initializing sounds
     # White noise is heard if the mixer is kept initialized
     print('Quack!!!')
     pygame.mixer.init(48000, -16, 1, 1024)
-    pygame.mixer.music.load("1.mp3")
+    pygame.mixer.music.load(file)
     pygame.mixer.music.set_volume(1)
     pygame.mixer.music.play()
     while pygame.mixer.music.get_busy() == True:
@@ -62,7 +62,7 @@ def getTime():
 
 def actions(ok):
     # Lets do more than one thing at the time
-    playFile()
+    playFile("1.mp3")
     img = snapshot()
     url = save_image_to_bucket(fire, img)
     add_image_record(fire, url)
