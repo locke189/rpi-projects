@@ -16,9 +16,9 @@ def firebase_init(config):
 def add_image_record(firebase, img_url):
     db = firebase.database()
     record = {
-        timestamp: time(),
-        url: img_url,
-        label: "PIR Event"
+        "timestamp": time(),
+        "url": img_url,
+        "label": "PIR Event"
     }
     db.child("snapshots").push(record)
 
