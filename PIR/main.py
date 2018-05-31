@@ -8,6 +8,7 @@ except RuntimeError:
 from time import sleep, time
 import datetime
 from firebase.firebase import *
+from vision.vision import *
 
 print('setting everything up!')
 
@@ -65,6 +66,7 @@ def actions(ok):
     # Lets do more than one thing at the time
     playFile("1.mp3")
     img = snapshot()
+    get_labels_from_img(img)
     url = save_image_to_bucket(fire, img)
     add_image_record(fire, url)
 
