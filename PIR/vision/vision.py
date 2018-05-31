@@ -1,30 +1,33 @@
-import pyrebase
-from time import time
 
-config = {
-    "apiKey": "AIzaSyALG_2SdJS3GN1Ibpj_LGSrbmjXjJjrlvQ",
-    "authDomain": "household-iot.firebaseapp.com",
-    "databaseURL": "https://household-iot.firebaseio.com",
-    "projectId": "household-iot",
-    "storageBucket": "household-iot.appspot.com",
-    "messagingSenderId": "1062863439327"
-}
+import io
+import os
 
-def firebase_init(config):
-    return pyrebase.initialize_app(config)
+# Imports the Google Cloud client library
+from google.cloud import vision
+from google.cloud.vision import types
 
-def add_image_record(firebase, img_url):
-    db = firebase.database()
-    record = {
-        "timestamp": time(),
-        "url": img_url,
-        "label": "PIR Event"
-    }
-    db.child("snapshots").push(record)
+# Instantiates a client
+client = vision.ImageAnnotatorClient()
 
-def save_image_to_bucket(firebase, img):
-    storage = firebase.storage()
-    # as admin
-    node = "images/" + img
-    storage.child(node).put(img)
-    return storage.child(node).get_url(None)
+# The name of the image file to annotate.
+def get_labels_from_img(img):
+
+    file_name = os.path.join(
+        os.path.dirname(__file__),
+        img)
+
+    # Loads the image into memory
+    with io.open(file_name, 'rb') as image_file:
+        content = image_file.read()
+
+    image = types.Image(content=content)
+
+    # Performs label detection on the image file
+    response = client.label_detection(image=image)
+    labels = response.label_annotations
+
+    print('Labels:')
+    for label in labels:
+        print(label.description)
+    
+    print(':D')
