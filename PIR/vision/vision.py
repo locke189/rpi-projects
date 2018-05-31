@@ -10,11 +10,7 @@ from google.cloud.vision import types
 client = vision.ImageAnnotatorClient()
 
 # The name of the image file to annotate.
-def get_labels_from_img(img):
-
-    file_name = os.path.join(
-        os.path.dirname(__file__),
-        img)
+def get_labels_from_img(file):
 
     # Loads the image into memory
     with io.open(file_name, 'rb') as image_file:

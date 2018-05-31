@@ -6,7 +6,7 @@ try:
     import datetime
     from firebase.firebase import *
     from vision.vision import *
-
+    
 except RuntimeError:
     print("Error importing RPi.GPIO!  This is probably because you need superuser privileges.  You can achieve this by using 'sudo' to run your script")
 
@@ -68,7 +68,10 @@ def actions(ok):
     # Lets do more than one thing at the time
     playFile("1.mp3")
     img = snapshot()
-    get_labels_from_img(img)
+    file_name = os.path.join(
+        os.path.dirname(__file__),
+        img)
+    get_labels_from_img(file_name)
     url = save_image_to_bucket(fire, img)
     add_image_record(fire, url)
 
